@@ -61,7 +61,6 @@ class App extends Component {
 
         fetchApi(`https://v6.exchangerate-api.com/v6/a8c9ba42fee214f007495dfc/latest/${value}`)
         .then(res => {
-            console.log(res.conversion_rates[value])
             this.setState({
                 data: res.conversion_rates,
                 currencies: {
