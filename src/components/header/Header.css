@@ -1,0 +1,34 @@
+.header {
+    margin: 20px 0;
+    padding: 20px 0;
+    border-bottom: 4px solid #2fa73b ;
+    display: flex;
+    justify-content: space-between;
+}
+.header__logo {
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 35px;
+}
+.currency {
+    display: flex;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+}
+.currency__item {
+    display: flex;
+}
+.currency__item:not(:last-child)::after{
+    content: '/';
+    display: block;
+    top: 0;
+    left: 0;
+    padding: 0 5px;
+    color: #2fa73b;
+}
+.currency__name {
+    padding-right: 5px;
+}
+
+
