@@ -13,7 +13,7 @@ class App extends Component {
         data: {},
         currencies: {
             from: { currency: 'UAH', amount: 1 },
-            to: { currency: 'USD', amount: 1 }
+            to: { currency: 'USD', amount: 0 }
         }
     };
 
@@ -57,15 +57,16 @@ class App extends Component {
 
     handlerCurrenciesFrom = () => e => {
         const { value } = e.target;
-        const { from: { amount } } = this.state.currencies;
+        const { from: { amount, currency } } = this.state.currencies;
 
         fetchApi(`https://v6.exchangerate-api.com/v6/a8c9ba42fee214f007495dfc/latest/${value}`)
         .then(res => {
+            console.log(res.conversion_rates[value])
             this.setState({
                 data: res.conversion_rates,
                 currencies: {
                     from: { ...this.state.currencies.from, currency: value },
-                    to: { ...this.state.currencies.to, amount: money(amount * +res.conversion_rates[value]) }
+                    to: { ...this.state.currencies.to, amount: money(amount * +res.conversion_rates[currency]) }
                 }
             })
         })
